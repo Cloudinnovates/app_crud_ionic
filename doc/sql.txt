@@ -1,0 +1,115 @@
+Banco de dados
+
+  api_movies_laravel
+    
+
+/* Erro com o diretório de recortes: The specified path was not found */
+/* Delimitador alterado para ; */
+/* Conectando em localhost via MySQL (TCP/IP), usuário root, usando a senha: No... */
+SELECT CONNECTION_ID();
+/* Conectado. Thread-ID: 2 */
+/* CharacterSet: utf8mb4 */
+SHOW STATUS;
+SHOW VARIABLES;
+SHOW DATABASES;
+SHOW OPEN TABLES FROM api_movies_laravel WHERE `in_use`!=0;
+USE `api_movies_laravel`;
+/* Entrando na sessão "Laragon" */
+SELECT `DEFAULT_COLLATION_NAME` FROM `information_schema`.`SCHEMATA` WHERE `SCHEMA_NAME`='api_movies_laravel';
+SHOW TABLE STATUS FROM `api_movies_laravel`;
+SHOW FUNCTION STATUS WHERE `Db`='api_movies_laravel';
+SHOW PROCEDURE STATUS WHERE `Db`='api_movies_laravel';
+SHOW TRIGGERS FROM `api_movies_laravel`;
+SELECT `DEFAULT_COLLATION_NAME` FROM `information_schema`.`SCHEMATA` WHERE `SCHEMA_NAME`='information_schema';
+SHOW TABLE STATUS FROM `information_schema`;
+SHOW FUNCTION STATUS WHERE `Db`='information_schema';
+SHOW PROCEDURE STATUS WHERE `Db`='information_schema';
+SHOW TRIGGERS FROM `information_schema`;
+SHOW EVENTS FROM `information_schema`;
+SELECT *, EVENT_SCHEMA AS `Db`, EVENT_NAME AS `Name` FROM information_schema.`EVENTS` WHERE `EVENT_SCHEMA`='api_movies_laravel';
+SHOW COLLATION;
+SHOW VARIABLES LIKE 'collation_server';
+CREATE DATABASE `api_crud_laravel` /*!40100 COLLATE 'utf8mb4_unicode_ci' */;
+SHOW DATABASES;
+/* Entrando na sessão "Laragon" */
+SHOW VARIABLES LIKE 'skip_name_resolve';
+FLUSH PRIVILEGES;
+SHOW COLUMNS FROM `mysql`.`user`;
+SELECT `user`, `host`, authentication_string AS `password` FROM `mysql`.`user`;
+SHOW GRANTS FOR 'hell'@'localhost';
+GRANT SELECT, EXECUTE, SHOW VIEW, ALTER, ALTER ROUTINE, CREATE, CREATE ROUTINE, CREATE TEMPORARY TABLES, CREATE VIEW, DELETE, DROP, EVENT, INDEX, INSERT, REFERENCES, TRIGGER, UPDATE, LOCK TABLES  ON `api\_crud\_laravel`.* TO 'hell'@'localhost' WITH GRANT OPTION;
+FLUSH PRIVILEGES;
+SHOW GRANTS FOR 'hell'@'localhost';
+/* Conexão com localhost fechada em 2020-01-02 09:28:51 */
+/* Conectando em localhost via MySQL (TCP/IP), usuário hell, usando a senha: Yes... */
+SELECT CONNECTION_ID();
+/* Conectado. Thread-ID: 3 */
+/* CharacterSet: utf8mb4 */
+SHOW STATUS;
+SHOW VARIABLES;
+SHOW DATABASES;
+/* Entrando na sessão "Laragon" */
+SELECT `DEFAULT_COLLATION_NAME` FROM `information_schema`.`SCHEMATA` WHERE `SCHEMA_NAME`='api_crud_laravel';
+SHOW TABLE STATUS FROM `api_crud_laravel`;
+SHOW FUNCTION STATUS WHERE `Db`='api_crud_laravel';
+SHOW PROCEDURE STATUS WHERE `Db`='api_crud_laravel';
+SHOW TRIGGERS FROM `api_crud_laravel`;
+SELECT `DEFAULT_COLLATION_NAME` FROM `information_schema`.`SCHEMATA` WHERE `SCHEMA_NAME`='information_schema';
+SHOW TABLE STATUS FROM `information_schema`;
+SHOW FUNCTION STATUS WHERE `Db`='information_schema';
+SHOW PROCEDURE STATUS WHERE `Db`='information_schema';
+SHOW TRIGGERS FROM `information_schema`;
+SHOW EVENTS FROM `information_schema`;
+SELECT *, EVENT_SCHEMA AS `Db`, EVENT_NAME AS `Name` FROM information_schema.`EVENTS` WHERE `EVENT_SCHEMA`='api_crud_laravel';
+USE `api_crud_laravel`;
+SHOW ENGINES;
+SHOW COLLATION;
+SHOW VARIABLES LIKE 'collation_database';
+CREATE TABLE `clientes` (
+	`id` INT(10) NULL
+)
+COLLATE='utf8mb4_unicode_ci'
+;
+SELECT `DEFAULT_COLLATION_NAME` FROM `information_schema`.`SCHEMATA` WHERE `SCHEMA_NAME`='api_crud_laravel';
+SHOW TABLE STATUS FROM `api_crud_laravel`;
+SHOW FUNCTION STATUS WHERE `Db`='api_crud_laravel';
+SHOW PROCEDURE STATUS WHERE `Db`='api_crud_laravel';
+SHOW TRIGGERS FROM `api_crud_laravel`;
+SELECT *, EVENT_SCHEMA AS `Db`, EVENT_NAME AS `Name` FROM information_schema.`EVENTS` WHERE `EVENT_SCHEMA`='api_crud_laravel';
+SHOW CREATE TABLE `api_crud_laravel`.`clientes`;
+/* Entrando na sessão "Laragon" */
+SHOW CREATE TABLE `api_crud_laravel`.`clientes`;
+ALTER TABLE `clientes`
+	CHANGE COLUMN `id` `id` INT(10) NOT NULL DEFAULT NULL FIRST,
+	ADD PRIMARY KEY (`id`);
+/* Erro SQL (1067): Invalid default value for 'id' */
+ALTER TABLE `clientes`
+	CHANGE COLUMN `id` `id` INT(10) UNSIGNED NOT NULL AUTO_INCREMENT FIRST,
+	ADD PRIMARY KEY (`id`);
+SELECT `DEFAULT_COLLATION_NAME` FROM `information_schema`.`SCHEMATA` WHERE `SCHEMA_NAME`='api_crud_laravel';
+SHOW TABLE STATUS FROM `api_crud_laravel`;
+SHOW FUNCTION STATUS WHERE `Db`='api_crud_laravel';
+SHOW PROCEDURE STATUS WHERE `Db`='api_crud_laravel';
+SHOW TRIGGERS FROM `api_crud_laravel`;
+SELECT *, EVENT_SCHEMA AS `Db`, EVENT_NAME AS `Name` FROM information_schema.`EVENTS` WHERE `EVENT_SCHEMA`='api_crud_laravel';
+SHOW CREATE TABLE `api_crud_laravel`.`clientes`;
+/* Entrando na sessão "Laragon" */
+SHOW CREATE TABLE `api_crud_laravel`.`clientes`;
+ALTER TABLE `clientes`
+	ADD COLUMN `nome` VARCHAR(100) NOT NULL AFTER `id`,
+	ADD COLUMN `telefone` VARCHAR(100) NOT NULL AFTER `nome`,
+	ADD COLUMN `email` VARCHAR(100) NOT NULL AFTER `telefone`;
+SELECT `DEFAULT_COLLATION_NAME` FROM `information_schema`.`SCHEMATA` WHERE `SCHEMA_NAME`='api_crud_laravel';
+SHOW TABLE STATUS FROM `api_crud_laravel`;
+SHOW FUNCTION STATUS WHERE `Db`='api_crud_laravel';
+SHOW PROCEDURE STATUS WHERE `Db`='api_crud_laravel';
+SHOW TRIGGERS FROM `api_crud_laravel`;
+SELECT *, EVENT_SCHEMA AS `Db`, EVENT_NAME AS `Name` FROM information_schema.`EVENTS` WHERE `EVENT_SCHEMA`='api_crud_laravel';
+SHOW CREATE TABLE `api_crud_laravel`.`clientes`;
+/* Entrando na sessão "Laragon" */
+SHOW CREATE TABLE `api_crud_laravel`.`clientes`;
+SELECT * FROM `api_crud_laravel`.`clientes` LIMIT 1000;
+SHOW CREATE TABLE `api_crud_laravel`.`clientes`;
+INSERT INTO `api_crud_laravel`.`clientes` (`id`, `nome`, `telefone`, `email`) VALUES ('1', 'mateus', '31975808454', 'mateus@mateus.com');
+SELECT `id`, `nome`, `telefone`, `email` FROM `api_crud_laravel`.`clientes` WHERE  `id`=1;
+SHOW CREATE TABLE `api_crud_laravel`.`clientes`;
