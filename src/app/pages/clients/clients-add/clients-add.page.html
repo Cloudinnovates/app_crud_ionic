@@ -1,10 +1,23 @@
+<!-- 
+*ngIf="!id"
+*ngIf="id>=1"
+-->
+
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="redirectPageClientList()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title *ngIf="!id">
       Client Add Page
+    </ion-title>
+    <ion-title *ngIf="id>=1">
+      Client Edit Page
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -25,7 +38,12 @@
     <ion-input type="email" [(ngModel)]="email"></ion-input>
   </ion-item>
 
-  <ion-item button color="primary" expanded="block" (click)="onClickAdd()">
-    <ion-label class="ion-text-center">Add</ion-label>
+  <ion-item button color="primary" expanded="block" (click)="onClickPost()" *ngIf="!id">
+    <ion-label class="ion-text-center">SAVE</ion-label>
   </ion-item>
+
+  <ion-item button color="primary" expanded="block" (click)="onClickPut()" *ngIf="id>=1">
+    <ion-label class="ion-text-center">SAVE</ion-label>
+  </ion-item>
+
 </ion-content>

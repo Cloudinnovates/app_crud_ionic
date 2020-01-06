@@ -11,8 +11,8 @@ import { AppRoutingModule } from './app-routing.module';
 
 //Hell
 import { HttpClientModule } from '@angular/common/http';
-import { CategoriesService } from './services/categories/categories.service';
 import { ClientsService } from './services/clients/clients.service';
+import { NativeStorage } from '@ionic-native/native-storage/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -21,13 +21,13 @@ import { ClientsService } from './services/clients/clients.service';
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule,
+    HttpClientModule    
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    CategoriesService,
     ClientsService,
+    NativeStorage,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]

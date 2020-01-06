@@ -9,13 +9,78 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-row>
 
-  <!-- fab placed to the (vertical) center and end -->
+  <ion-col size="10">
+      <ion-input [(ngModel)]="name" type="search" placeholder="Search..."></ion-input> 
+  </ion-col>
+  <ion-col>
+    <ion-buttons (click)="onClickSearch()">
+    <ion-button color="primary">
+      <ion-icon slot="end" name="search"></ion-icon>
+    </ion-button>
+    </ion-buttons>        
+  </ion-col>
+  
+</ion-row>
+
+<ion-content>
+  
+  <!-- Refresh Data -->
+  <ion-refresher slot="fixed" (ionRefresh)="onClickRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"      
+      refreshingSpinner="circles"
+      refreshingText="Loading await...">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <!-- List View -->
+  <ion-list>      
+    <ion-item-sliding *ngFor="let client of clients">
+
+      <ion-item> <!-- <ion-item href="#">-->
+        <ion-label>
+          <h2>{{client.name}}</h2>
+          <p>{{client.phone}}</p>
+          <p>{{client.email}}</p>
+        </ion-label>
+        <ion-note slot="end">
+          {{client.created_at}}
+        </ion-note>
+      </ion-item>
+  
+      <ion-item-options side="start">
+        <ion-item-option color="secondary" (click)="onClickPut(client.id, client.name, client.phone, client.email, client.updated_at)">
+          <ion-icon slot="icon-only" name="create"></ion-icon>
+        </ion-item-option>
+        <ion-item-option (click)="onClickShow(client.id, client.name, client.phone, client.email, client.created_at, client.updated_at)">
+          <ion-icon slot="icon-only" name="information-circle"></ion-icon>
+        </ion-item-option>        
+      </ion-item-options>
+  
+      <ion-item-options side="end">
+        <ion-item-option color="danger" (click)="onClickDelete(client.id)">
+          <ion-icon slot="icon-only" name="trash"></ion-icon>
+        </ion-item-option>
+      </ion-item-options>
+
+    </ion-item-sliding>  
+  </ion-list>
+
+  <!-- Fab Buttom -->
   <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-    <ion-fab-button (click)="onClickAdd()">
+    <ion-fab-button (click)="redirectPageClientAdd()">
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>
   </ion-fab>
+
+  <!-- Infinity Scrool -->
+  <ion-infinite-scroll (ionInfinite)="onClickInfiniteScroll($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Loading await...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 
 </ion-content>

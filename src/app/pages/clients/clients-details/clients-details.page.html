@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="redirectPageClientList()">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>    
+    <ion-title>
+      Client Details Page
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>     
+      <ion-card-title text-center="center">Client Details</ion-card-title> <br> 
+      <ion-card-subtitle>Client: {{name}}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+     Phone: {{phone}} <br> 
+     Email: {{email}} <br> 
+     Created: {{created_at}}
+    </ion-card-content>
+
+  </ion-card>
+</ion-content>

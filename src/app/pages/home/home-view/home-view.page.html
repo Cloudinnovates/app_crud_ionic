@@ -3,6 +3,11 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="onClickLogout()">
+        <ion-icon slot="icon-only" name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons>    
     <ion-title>
       Home View Page
     </ion-title>
@@ -13,8 +18,8 @@
   <ion-card class="welcome-card">
     <img src="/assets/shapes.svg" alt=""/>
     <ion-card-header>
-      <ion-card-subtitle>Get Started</ion-card-subtitle>
-      <ion-card-title>Welcome to Ionic</ion-card-title>
+      <ion-card-title>Welcome {{ userLogged }}</ion-card-title>
+      <ion-card-subtitle>App Register Clients</ion-card-subtitle>
     </ion-card-header>
     <ion-card-content>
       <p>

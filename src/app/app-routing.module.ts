@@ -4,36 +4,36 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'home-view',
+    redirectTo: 'login-view',
     pathMatch: 'full'
   },
   {
-    path: 'home-view',
+    path: 'home-view', //DEFAULT PAGE 
     loadChildren: () => import('./pages/home/home-view/home-view.module').then( m => m.HomeViewPageModule)
   },
   {
-    path: 'clients-add',
+    path: 'clients-add', //ADD PAGE 
     loadChildren: () => import('./pages/clients/clients-add/clients-add.module').then( m => m.ClientsAddPageModule)
   },
   {
-    path: 'clients-list',
+    path: 'clients-add/:id/:name/:phone/:email/:updated_at', //EDIT PAGE 
+    loadChildren: () => import('./pages/clients/clients-add/clients-add.module').then( m => m.ClientsAddPageModule)
+  },  
+  {
+    path: 'clients-list', //LIST PAGE 
     loadChildren: () => import('./pages/clients/clients-list/clients-list.module').then( m => m.ClientsListPageModule)
   },
   {
-    path: 'clients-view',
-    loadChildren: () => import('./pages/clients/clients-view/clients-view.module').then( m => m.ClientsViewPageModule)
-  },
+    path: 'clients-details', //DETAILS PAGE 
+    loadChildren: () => import('./pages/clients/clients-details/clients-details.module').then( m => m.ClientsDetailsPageModule)
+  },  
   {
-    path: 'categories-add',
-    loadChildren: () => import('./pages/categories/categories-add/categories-add.module').then( m => m.CategoriesAddPageModule)
-  },
+    path: 'clients-details/:id/:name/:phone/:email/:created_at/:updated_at', //DETAILS PAGE 
+    loadChildren: () => import('./pages/clients/clients-details/clients-details.module').then( m => m.ClientsDetailsPageModule)
+  },  
   {
-    path: 'categories-list',
-    loadChildren: () => import('./pages/categories/categories-list/categories-list.module').then( m => m.CategoriesListPageModule)
-  },
-  {
-    path: 'categories-view',
-    loadChildren: () => import('./pages/categories/categories-view/categories-view.module').then( m => m.CategoriesViewPageModule)
+    path: 'login-view', //LOGIN PAGE 
+    loadChildren: () => import('./pages/login/login-view/login-view.module').then( m => m.LoginViewPageModule)
   }
 ];
 

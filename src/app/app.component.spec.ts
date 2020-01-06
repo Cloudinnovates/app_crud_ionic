@@ -50,15 +50,13 @@ describe('AppComponent', () => {
     const app = fixture.nativeElement;
     const menuItems = app.querySelectorAll('ion-label');
     expect(menuItems.length).toEqual(2);
-    expect(menuItems[0].textContent).toContain('Home view Page');
+    expect(menuItems[0].textContent).toContain('Home view');
 
-    expect(menuItems[1].textContent).toContain('Category Add Page');
-    expect(menuItems[2].textContent).toContain('Category List Page');
-    expect(menuItems[3].textContent).toContain('Category View Page');
+    expect(menuItems[1].textContent).toContain('Client Add');
+    expect(menuItems[2].textContent).toContain('Client List');
+    expect(menuItems[3].textContent).toContain('Client Details');
 
-    expect(menuItems[4].textContent).toContain('Client Add Page');
-    expect(menuItems[5].textContent).toContain('Client List Page');
-    expect(menuItems[6].textContent).toContain('Client View Page');
+    expect(menuItems[4].textContent).toContain('Login View');
   });
 
   it('should have urls', async () => {
@@ -69,13 +67,11 @@ describe('AppComponent', () => {
     expect(menuItems.length).toEqual(2);
     expect(menuItems[0].getAttribute('ng-reflect-router-link')).toEqual('/home-view');
 
-    expect(menuItems[1].getAttribute('ng-reflect-router-link')).toEqual('/categories-add');
-    expect(menuItems[2].getAttribute('ng-reflect-router-link')).toEqual('/categories-list');
-    expect(menuItems[3].getAttribute('ng-reflect-router-link')).toEqual('/categories-view');
+    expect(menuItems[1].getAttribute('ng-reflect-router-link')).toEqual('/clients-add');
+    expect(menuItems[2].getAttribute('ng-reflect-router-link')).toEqual('/clients-list');
+    expect(menuItems[3].getAttribute('ng-reflect-router-link')).toEqual('/clients-details');
 
-    expect(menuItems[4].getAttribute('ng-reflect-router-link')).toEqual('/clients-add');
-    expect(menuItems[5].getAttribute('ng-reflect-router-link')).toEqual('/clients-add');
-    expect(menuItems[6].getAttribute('ng-reflect-router-link')).toEqual('/clients-add');
+    expect(menuItems[4].getAttribute('ng-reflect-router-link')).toEqual('/login-view');
 
   });
 

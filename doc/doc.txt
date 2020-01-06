@@ -23,17 +23,29 @@ Pages
 	$ ionic g page pages/clients-list
 	$ ionic g page pages/clients-view
 
+	$ ionic g page pages/login/login-view
+
 Services
 
 	$ ionic g service services/clients/clients
-
-	$ ionic g service services/categories/categories
 
 Instalando dependencias "http" para fazermos as requisições via "GET/POST/PUT/DELETE"
 
 	$ ionic cordova plugin add cordova-plugin-advanced-http
 	$ npm install @ionic-native/http
 	$ npm install rxjs@6 rxjs-compat@6 --save
+	$ npm install rxjs-compat
+	$ ionic cordova plugin add cordova-plugin-nativestorage
+	$ npm install @ionic-native/native-storage
+
+
+APK - Cordova Build	
+	$ ionic cordova build android
+
+
+APK - Cordova Run
+	$ ionic cordova run android
+
 
 Removendo node_modules
 
