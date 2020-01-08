@@ -17,11 +17,11 @@ Pages
 
 	$ ionic g page pages/categories-add
 	$ ionic g page pages/categories-list
-	$ ionic g page pages/categories-view
+	$ ionic g page pages/categories-details
 
 	$ ionic g page pages/clients-add
 	$ ionic g page pages/clients-list
-	$ ionic g page pages/clients-view
+	$ ionic g page pages/clients-details
 
 	$ ionic g page pages/login/login-view
 
@@ -50,3 +50,6 @@ APK - Cordova Run
 Removendo node_modules
 
 	$ npm remove node_modules
+
+
+<!-- [(ngModel)]="name" [ngModelOptions]="{standalone: true}" -->

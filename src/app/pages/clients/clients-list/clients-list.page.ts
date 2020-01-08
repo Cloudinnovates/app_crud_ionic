@@ -20,7 +20,7 @@ export class ClientsListPage implements OnInit {
   name: string;
   clients: any;
   scroolStart: number = 0;
-  scroolLimit: number = 5;
+  scroolLimit: number = 10;
 
   //Construtor da classe principal
   constructor(

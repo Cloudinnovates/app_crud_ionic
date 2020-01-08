@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+
+//Hell
 import { Router, ActivatedRoute } from '@angular/router';
 import { ClientsService } from 'src/app/services/clients/clients.service';
 import { NavController, ToastController } from '@ionic/angular';
+import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-clients-add',
@@ -22,15 +25,23 @@ export class ClientsAddPage implements OnInit {
   created_at: string = "";
   updated_at: string = "";
 
+  //Validação
+  formGroup: FormGroup
+
   //Construtor da classe prncipal
   constructor(
     private router: Router,
     private service: ClientsService,
     private navController: NavController,
     private toastController: ToastController,
-    private actRoute: ActivatedRoute
+    private actRoute: ActivatedRoute,
+    private formBuilder: FormBuilder
   ) {
-    //CODE...
+    this.formGroup = this.formBuilder.group({
+      name: [this.name, Validators.compose([Validators.required, Validators.minLength(3), Validators.maxLength(20)])],
+      phone: [this.phone, Validators.compose([Validators.required, Validators.minLength(10), Validators.maxLength(11)])],
+      email: [this.email, Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(50), Validators.pattern('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+.[a-zA-Z0-9-.]+$')])]
+    });
   }
 
   //Primeiro método a ser iniciado
@@ -49,12 +60,15 @@ export class ClientsAddPage implements OnInit {
   //Método para cadastrar
   onClickPost(){
     return new Promise(resolve => {
+
+      let formData = this.formGroup.value;
+
       let dados = {
         method: 'post',
-        name: this.name,
-        phone: this.phone,
-        email: this.email,
-        created_at: this.created_at
+        name: formData.name,
+        phone: formData.phone,
+        email: formData.email,
+        created_at: formData.created_at
       };
       
       this.service.post(dados, this.urlApi).subscribe(data => {
@@ -76,14 +90,18 @@ export class ClientsAddPage implements OnInit {
   //Método pra atualizar
   onClickPut(){
     return new Promise(resolve => {
+
+      let formData = this.formGroup.value;
+
       let dados = {
         method : 'put',
-        id: this.id,
-        name: this.name,
-        phone: this.phone,
-        email: this.email,
-        updated_at: this.updated_at
+        id: formData.id,
+        name: formData.name,
+        phone: formData.phone,
+        email: formData.email,
+        updated_at: formData.updated_at        
       };
+      
       this.service.post(dados, this.urlApi)
       .subscribe(data => { 
         if(data){
@@ -95,7 +113,10 @@ export class ClientsAddPage implements OnInit {
           this.msgPutError();
           console.log('Error, Não foi possível atualizar!');
         }          
-      });          
+      });
+      
+      
+
     });
   }
 

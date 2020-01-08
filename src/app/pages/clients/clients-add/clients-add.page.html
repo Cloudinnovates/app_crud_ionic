@@ -1,8 +1,3 @@
-<!-- 
-*ngIf="!id"
-*ngIf="id>=1"
--->
-
 <ion-header>
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
@@ -23,27 +18,46 @@
 </ion-header>
 
 <ion-content class="ion-padding">
-  <ion-item>
-    <ion-label position="floating">Name</ion-label>
-    <ion-input type="text" [(ngModel)]="name"></ion-input>
-  </ion-item>
+  <form [formGroup]="formGroup">  
 
-  <ion-item>
-    <ion-label position="floating">Phone</ion-label>
-    <ion-input type="tel" [(ngModel)]="phone"></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-label position="floating">Name</ion-label>
+      <ion-input type="text" formControlName="name"></ion-input>
+      <div *ngIf="formGroup.controls.name.errors">
+        <p *ngIf="formGroup.controls.name.errors.required">Name is required! </p>
+        <p *ngIf="formGroup.controls.name.errors.minlength">Name must be at least 3 characters long! </p>
+        <p *ngIf="formGroup.controls.name.errors.maxlength">Name cannot be more than 20 characters long! </p>
+      </div>    
+    </ion-item>
 
-  <ion-item>
-    <ion-label position="floating">Email</ion-label>
-    <ion-input type="email" [(ngModel)]="email"></ion-input>
-  </ion-item>
+    <ion-item>
+      <ion-label position="floating">Phone</ion-label>
+      <ion-input type="tel" formControlName="phone"></ion-input>
+      <div *ngIf="formGroup.controls.phone.errors">
+        <p *ngIf="formGroup.controls.phone.errors.required">Phone is required! </p>
+        <p *ngIf="formGroup.controls.phone.errors.minlength">Phone must be at least 10 characters long! </p>
+        <p *ngIf="formGroup.controls.phone.errors.maxlength">Phone cannot be more than 11 characters long! </p>
+      </div> 
+    </ion-item>
 
-  <ion-item button color="primary" expanded="block" (click)="onClickPost()" *ngIf="!id">
-    <ion-label class="ion-text-center">SAVE</ion-label>
-  </ion-item>
+    <ion-item>
+      <ion-label position="floating">Email</ion-label>
+      <ion-input type="email" formControlName="email"></ion-input>
+      <div *ngIf="formGroup.controls.email.errors">
+        <p *ngIf="formGroup.controls.email.errors.required">Email is required! </p>
+        <p *ngIf="formGroup.controls.email.errors.minlength">Email must be at least 6 characters long! </p>
+        <p *ngIf="formGroup.controls.email.errors.maxlength">Email cannot be more than 50 characters long! </p>      
+        <p *ngIf="formGroup.controls.email.errors.pattern">Your email must contain only numbers and letters! </p>
+      </div>     
+    </ion-item>
 
-  <ion-item button color="primary" expanded="block" (click)="onClickPut()" *ngIf="id>=1">
-    <ion-label class="ion-text-center">SAVE</ion-label>
-  </ion-item>
+    <ion-item button color="primary" expanded="block" (click)="onClickPost()" *ngIf="!id" [disabled]="!formGroup.valid">
+      <ion-label class="ion-text-center">INSERT</ion-label>
+    </ion-item>
 
+    <ion-item button color="primary" expanded="block" (click)="onClickPut()" *ngIf="id>=1" [disabled]="!formGroup.valid">
+      <ion-label class="ion-text-center">UPDATE</ion-label>
+    </ion-item>
+    
+  </form>
 </ion-content>
